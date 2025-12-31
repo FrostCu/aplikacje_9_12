@@ -31,7 +31,12 @@ class ReservationController extends Controller
             ->exists();
 
         if ($exists) {
-            return back()->with('error', 'You have already reserved this book.');
+            return back()->with('error', 'Już zarezerwowałeś tę książkę.');
+        }
+
+        $book = \App\Models\Book::find($bookId);
+        if ($book->available_copies < 1) {
+            return back()->with('error', 'Przepraszamy, nie ma dostępnych egzemplarzy do rezerwacji w tej chwili.');
         }
 
         Reservation::create([
@@ -40,7 +45,7 @@ class ReservationController extends Controller
             'reserved_date' => now()->toDateString(),
         ]);
 
-        return back()->with('success', 'Book reserved successfully!');
+        return back()->with('success', 'Książka została zarezerwowana pomyślnie!');
     }
 
     /**
@@ -54,6 +59,6 @@ class ReservationController extends Controller
 
         $reservation->delete();
 
-        return back()->with('success', 'Reservation cancelled.');
+        return back()->with('success', 'Rezerwacja anulowana.');
     }
 }

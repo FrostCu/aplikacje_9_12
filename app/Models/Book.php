@@ -14,10 +14,19 @@ class Book extends Model
         'title',
         'description',
         'isbn',
+        'total_copies',
         'published_year',
         'category_id',
         'publisher_id',
     ];
+
+    public function getAvailableCopiesAttribute()
+    {
+        $activeLoans = $this->loans()->whereNull('returned_date')->count();
+        $activeReservations = $this->reservations()->count();
+        
+        return max(0, $this->total_copies - $activeLoans - $activeReservations);
+    }
 
     public function category()
     {
