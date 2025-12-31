@@ -4,18 +4,18 @@
     <div class="space-y-12">
         <section class="text-center space-y-4 py-8">
             <h1 class="text-4xl font-bold tracking-tight text-[#1b1b18] dark:text-[#EDEDEC]">
-                Welcome to the Library
+                Witamy w Bibliotece
             </h1>
             <p class="text-lg text-[#706f6c] dark:text-[#A1A09A] max-w-2xl mx-auto">
-                Discover your next favorite book from our extensive collection. Borrow, reserve, and review books with ease.
+                Odkryj swoją następną ulubioną książkę w naszej obszernej kolekcji. Wypożyczaj, rezerwuj i oceniaj książki z łatwością.
             </p>
             <div class="flex justify-center gap-4 mt-6">
                 <a href="{{ route('books.index') }}" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#1b1b18] hover:bg-black md:text-lg transition-colors">
-                    Browse All Books
+                    Przeglądaj Książki
                 </a>
                 @guest
                     <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-6 py-3 border border-[#e3e3e0] dark:border-[#3E3E3A] text-base font-medium rounded-md text-[#1b1b18] dark:text-[#EDEDEC] bg-white dark:bg-[#161615] hover:bg-gray-50 dark:hover:bg-[#1C1C1A] md:text-lg transition-colors">
-                        Join Now
+                        Dołącz Teraz
                     </a>
                 @endguest
             </div>
@@ -23,8 +23,8 @@
 
         <section>
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Latest Additions</h2>
-                <a href="{{ route('books.index') }}" class="text-sm font-medium text-[#f53003] hover:underline">View all &rarr;</a>
+                <h2 class="text-2xl font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Najnowsze Dodatki</h2>
+                <a href="{{ route('books.index') }}" class="text-sm font-medium text-[#f53003] hover:underline">Zobacz wszystkie &rarr;</a>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -46,7 +46,7 @@
                                 </a>
                             </h3>
                             <p class="mt-1 text-sm text-[#706f6c] dark:text-[#A1A09A]">
-                                by {{ $book->authors->pluck('name')->join(', ') }}
+                                autor: {{ $book->authors->pluck('name')->join(', ') }}
                             </p>
                             <div class="mt-4 flex items-center justify-between text-sm text-[#706f6c] dark:text-[#A1A09A]">
                                 <span>{{ $book->published_year }}</span>
@@ -60,7 +60,7 @@
                     </div>
                 @empty
                     <div class="col-span-full text-center py-12 text-[#706f6c] dark:text-[#A1A09A]">
-                        <p>No books available at the moment.</p>
+                        <p>Brak dostępnych książek w tej chwili.</p>
                     </div>
                 @endforelse
             </div>

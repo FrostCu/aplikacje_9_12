@@ -3,18 +3,18 @@
 @section('content')
 <div class="space-y-12">
     <header>
-        <h1 class="text-3xl font-bold tracking-tight">Your Dashboard</h1>
-        <p class="text-[#706f6c]">Welcome back, {{ Auth::user()->name }}. Manage your library activities here.</p>
+        <h1 class="text-3xl font-bold tracking-tight">Twój Panel</h1>
+        <p class="text-[#706f6c]">Witaj ponownie, {{ Auth::user()->name }}. Zarządzaj swoimi aktywnościami w bibliotece tutaj.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Loans Section -->
         <div class="lg:col-span-2 space-y-6">
-            <h2 class="text-xl font-semibold">Current Loans</h2>
+            <h2 class="text-xl font-semibold">Aktualne Wypożyczenia</h2>
             @if($loans->isEmpty())
                 <div class="p-8 text-center border border-dashed border-[#19140015] dark:border-[#ffffff15] rounded-lg">
-                    <p class="text-[#706f6c]">You don't have any active loans.</p>
-                    <a href="{{ route('books.index') }}" class="text-[#f53003] text-sm font-medium mt-2 inline-block">Browse Books</a>
+                    <p class="text-[#706f6c]">Nie masz żadnych aktywnych wypożyczeń.</p>
+                    <a href="{{ route('books.index') }}" class="text-[#f53003] text-sm font-medium mt-2 inline-block">Przeglądaj Książki</a>
                 </div>
             @else
                 <div class="grid gap-4">
@@ -26,12 +26,12 @@
                                 </div>
                                 <div>
                                     <h4 class="font-medium text-sm">{{ $loan->book->title }}</h4>
-                                    <p class="text-xs text-[#706f6c]">Borrowed on {{ $loan->loan_date }}</p>
+                                    <p class="text-xs text-[#706f6c]">Wypożyczono {{ $loan->loan_date }}</p>
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="text-xs font-bold uppercase tracking-widest {{ $loan->return_date ? 'text-green-500' : 'text-[#f53003]' }}">
-                                    {{ $loan->return_date ? 'Returned' : 'Due: ' . $loan->due_date }}
+                                <span class="text-xs font-bold uppercase tracking-widest {{ $loan->returned_date ? 'text-green-500' : 'text-[#f53003]' }}">
+                                    {{ $loan->returned_date ? 'Zwrócono' : 'Termin: ' . $loan->due_date }}
                                 </span>
                             </div>
                         </div>
@@ -42,16 +42,10 @@
 
         <!-- Sidebar Actions -->
         <div class="space-y-8">
-            <div class="p-6 bg-[#fff2f2] dark:bg-[#1D0002] rounded-lg">
-                <h3 class="font-bold text-[#f53003] mb-2">Need Help?</h3>
-                <p class="text-sm text-[#706f6c] mb-4">If you have any issues with your loans or reservations, please contact our support.</p>
-                <a href="mailto:support@library.com" class="text-sm font-bold text-[#1b1b18] dark:text-white underline">Contact Support</a>
-            </div>
-
             <div class="space-y-4">
-                <h3 class="font-semibold">Your Reservations</h3>
+                <h3 class="font-semibold">Twoje Rezerwacje</h3>
                 @if($reservations->isEmpty())
-                    <p class="text-xs text-[#706f6c]">No active reservations.</p>
+                    <p class="text-xs text-[#706f6c]">Brak aktywnych rezerwacji.</p>
                 @else
                     @foreach($reservations as $reservation)
                         <div class="text-sm py-2 border-b border-[#19140015] dark:border-[#ffffff15] flex items-center justify-between">
@@ -63,9 +57,9 @@
             </div>
 
             <div class="space-y-4">
-                <h3 class="font-semibold">Your Reviews</h3>
+                <h3 class="font-semibold">Twoje Opinie</h3>
                 @if($reviews->isEmpty())
-                    <p class="text-xs text-[#706f6c]">You haven't written any reviews yet.</p>
+                    <p class="text-xs text-[#706f6c]">Nie napisałeś jeszcze żadnej opinii.</p>
                 @else
                     @foreach($reviews as $review)
                         <div class="p-3 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded text-xs">

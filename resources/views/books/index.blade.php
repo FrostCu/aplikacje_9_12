@@ -6,13 +6,13 @@
     <aside class="w-full md:w-64 shrink-0">
         <div class="sticky top-24 space-y-8">
             <div>
-                <h3 class="text-lg font-semibold mb-4">Search</h3>
+                <h3 class="text-lg font-semibold mb-4">Szukaj</h3>
                 <form action="{{ route('books.index') }}" method="GET" class="relative">
                     <input 
                         type="text" 
                         name="search" 
                         value="{{ request('search') }}"
-                        placeholder="Title, author, ISBN..." 
+                        placeholder="Tytuł, autor, ISBN..." 
                         class="w-full px-4 py-2 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-sm text-sm focus:outline-none focus:border-[#f53003] transition-colors"
                     >
                     <button type="submit" class="absolute right-3 top-2.5 text-[#706f6c]">
@@ -22,11 +22,11 @@
             </div>
 
             <div>
-                <h3 class="text-lg font-semibold mb-4">Categories</h3>
+                <h3 class="text-lg font-semibold mb-4">Kategorie</h3>
                 <ul class="space-y-2">
                     <li>
                         <a href="{{ route('books.index') }}" class="text-sm {{ !request('category') ? 'text-[#f53003] font-medium' : 'text-[#706f6c] hover:text-[#1b1b18] dark:hover:text-white' }} transition-colors">
-                            All Categories
+                            Wszystkie Kategorie
                         </a>
                     </li>
                     @foreach($categories as $category)
@@ -45,14 +45,14 @@
     <!-- Book Grid -->
     <div class="flex-1">
         <div class="flex items-center justify-between mb-8">
-            <h1 class="text-3xl font-bold tracking-tight">Our Collection</h1>
-            <p class="text-sm text-[#706f6c]">{{ $books->total() }} books found</p>
+            <h1 class="text-3xl font-bold tracking-tight">Nasza Kolekcja</h1>
+            <p class="text-sm text-[#706f6c]">Znaleziono {{ $books->total() }} książek</p>
         </div>
 
         @if($books->isEmpty())
             <div class="py-20 text-center border border-dashed border-[#19140015] dark:border-[#ffffff15] rounded-lg">
-                <p class="text-[#706f6c]">No books found matching your criteria.</p>
-                <a href="{{ route('books.index') }}" class="text-[#f53003] text-sm font-medium mt-2 inline-block">Clear all filters</a>
+                <p class="text-[#706f6c]">Nie znaleziono książek spełniających kryteria.</p>
+                <a href="{{ route('books.index') }}" class="text-[#f53003] text-sm font-medium mt-2 inline-block">Wyczyść filtry</a>
             </div>
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -63,7 +63,7 @@
                             <div class="text-center">
                                 <span class="block text-xs font-bold text-[#f53003] uppercase tracking-widest mb-2">{{ $book->category->name }}</span>
                                 <h4 class="font-semibold line-clamp-2 px-4">{{ $book->title }}</h4>
-                                <p class="text-xs text-[#706f6c] mt-2">by {{ $book->authors->pluck('name')->join(', ') }}</p>
+                                <p class="text-xs text-[#706f6c] mt-2">autor: {{ $book->authors->pluck('name')->join(', ') }}</p>
                             </div>
                         </div>
                         <div class="p-4">
@@ -72,7 +72,7 @@
                                 <span class="text-xs font-medium">{{ $book->published_year }}</span>
                             </div>
                             <a href="{{ route('books.show', $book) }}" class="block w-full text-center py-2 border border-[#1b1b18] dark:border-[#eeeeec] rounded-sm text-sm font-medium group-hover:bg-[#1b1b18] group-hover:text-white dark:group-hover:bg-[#eeeeec] dark:group-hover:text-[#1C1C1A] transition-all">
-                                View Details
+                                Zobacz Szczegóły
                             </a>
                         </div>
                     </div>

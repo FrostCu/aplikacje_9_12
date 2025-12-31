@@ -4,8 +4,8 @@
 <div class="space-y-8">
     <header class="flex items-center justify-between">
         <div>
-            <h1 class="text-3xl font-bold tracking-tight">User Management</h1>
-            <p class="text-[#706f6c]">Manage library users and their roles.</p>
+            <h1 class="text-3xl font-bold tracking-tight">Zarządzanie Użytkownikami</h1>
+            <p class="text-[#706f6c]">Zarządzaj użytkownikami biblioteki i ich rolami.</p>
         </div>
     </header>
 
@@ -13,11 +13,11 @@
         <table class="w-full text-sm text-left">
             <thead class="bg-[#FDFDFC] dark:bg-[#0a0a0a] border-b border-[#19140015] dark:border-[#ffffff15]">
                 <tr>
-                    <th class="px-6 py-4 font-semibold">Name</th>
+                    <th class="px-6 py-4 font-semibold">Imię i Nazwisko</th>
                     <th class="px-6 py-4 font-semibold">Email</th>
-                    <th class="px-6 py-4 font-semibold">Role</th>
-                    <th class="px-6 py-4 font-semibold">Joined</th>
-                    <th class="px-6 py-4 font-semibold text-right">Actions</th>
+                    <th class="px-6 py-4 font-semibold">Rola</th>
+                    <th class="px-6 py-4 font-semibold">Dołączono</th>
+                    <th class="px-6 py-4 font-semibold text-right">Akcje</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-[#19140015] dark:divide-[#ffffff15]">
@@ -32,12 +32,12 @@
                         </td>
                         <td class="px-6 py-4 text-[#706f6c] text-xs">{{ $user->created_at->format('M d, Y') }}</td>
                         <td class="px-6 py-4 text-right space-x-2">
-                            <a href="{{ route('admin.users.edit', $user) }}" class="text-[#f53003] hover:underline font-medium">Edit</a>
+                            <a href="{{ route('admin.users.edit', $user) }}" class="text-[#f53003] hover:underline font-medium">Edytuj</a>
                             @if($user->id !== auth()->id())
                                 <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-gray-400 hover:text-red-600 transition-colors" onclick="return confirm('Are you sure?')">Delete</button>
+                                    <button type="submit" class="text-gray-400 hover:text-red-600 transition-colors" onclick="return confirm('Czy na pewno chcesz usunąć?')">Usuń</button>
                                 </form>
                             @endif
                         </td>
