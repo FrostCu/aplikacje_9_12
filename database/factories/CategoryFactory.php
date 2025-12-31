@@ -16,8 +16,15 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $categories = [
+            'Fikcja', 'Science Fiction', 'Kryminał', 'Thriller', 'Romans',
+            'Fantasy', 'Biografia', 'Historia', 'Poradnik', 'Biznes',
+            'Podróże', 'Kulinaria', 'Nauka', 'Technologia', 'Sztuka',
+            'Filozofia', 'Psychologia', 'Zdrowie', 'Dla dzieci', 'Komiks'
+        ];
+
         return [
-            'name' => fake()->word(),
+            'name' => fake()->unique()->randomElement($categories),
         ];
     }
 }

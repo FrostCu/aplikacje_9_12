@@ -16,8 +16,16 @@ class PublisherFactory extends Factory
      */
     public function definition(): array
     {
+        $publishers = [
+            'Znak', 'Wydawnictwo Literackie', 'Rebis', 'Agora',
+            'Prószyński i S-ka', 'Wydawnictwo Kobiece', 'Nasza Księgarnia', 'Muza',
+            'Albatros', 'Czarna Owca', 'Sonia Draga', 'W.A.B.',
+            'Zysk i S-ka', 'Mag', 'Helion',
+            'PWN', 'Bukowy Las', 'Filia', 'Marginesy', 'Otwarte'
+        ];
+
         return [
-            'name' => fake()->company(),
+            'name' => fake()->randomElement($publishers),
         ];
     }
 }

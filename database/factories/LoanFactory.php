@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Book;
+use Carbon\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Loan>
  */
-use App\Models\User;
-use App\Models\Book;
-
 class LoanFactory extends Factory
 {
     /**
@@ -19,12 +19,20 @@ class LoanFactory extends Factory
      */
     public function definition(): array
     {
+        $loanDate = fake()->dateTimeBetween('-3 months', 'now');
+        $dueDate = (clone $loanDate)->modify('+2 weeks');
+        
+        $returnedDate = null;
+        if (fake()->boolean(70)) {
+            $returnedDate = fake()->dateTimeBetween($loanDate, 'now');
+        }
+
         return [
             'user_id' => User::factory(),
             'book_id' => Book::factory(),
-            'loan_date' => fake()->dateTimeThisMonth(),
-            'due_date' => fake()->dateTimeThisMonth('+2 weeks'),
-            'returned_date' => fake()->optional(0.7)->dateTimeThisMonth(),
+            'loan_date' => $loanDate,
+            'due_date' => $dueDate,
+            'returned_date' => $returnedDate,
         ];
     }
 }
