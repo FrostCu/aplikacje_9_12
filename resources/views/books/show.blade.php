@@ -3,7 +3,6 @@
 @section('content')
 <div class="max-w-5xl mx-auto">
     <div class="flex flex-col md:flex-row gap-12">
-        <!-- Book Cover Placeholder -->
         <div class="w-full md:w-1/3">
             <div class="aspect-3/4 bg-[#fff2f2] dark:bg-[#1D0002] flex items-center justify-center p-12 rounded-lg shadow-inner">
                 <div class="text-center">
@@ -13,7 +12,6 @@
             </div>
         </div>
 
-        <!-- Book Details -->
         <div class="flex-1">
             <nav class="flex mb-4" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3 text-xs font-medium text-[#706f6c]">
@@ -24,7 +22,7 @@
             </nav>
 
             <h1 class="text-4xl font-bold tracking-tight mb-2">{{ $book->title }}</h1>
-            <p class="text-xl text-[#706f6c] mb-6">autor: {{ $book->authors->pluck('name')->join(', ') }}</p>
+            <p class="text-xl text-[#706f6c] mb-6"> {{ $book->authors->pluck('name')->join(', ') }}</p>
 
             <div class="flex flex-wrap gap-4 mb-8">
                 <div class="px-4 py-2 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-lg">
@@ -84,7 +82,6 @@
         </div>
     </div>
 
-    <!-- Reviews Section -->
     <section class="mt-20">
         <div class="flex items-center justify-between mb-8">
             <h2 class="text-2xl font-bold tracking-tight">Opinie Użytkowników</h2>
@@ -99,8 +96,8 @@
                         <input type="hidden" name="book_id" value="{{ $book->id }}">
                         
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-widest text-[#706f6c] mb-2">Ocena</label>
-                            <select name="rating" class="w-full md:w-32 px-4 py-2 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-sm text-sm focus:outline-none focus:border-[#f53003]">
+                            <label for="rating" class="block text-xs font-bold uppercase tracking-widest text-[#706f6c] mb-2">Ocena</label>
+                            <select id="rating" name="rating" class="w-full md:w-32 px-4 py-2 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-sm text-sm focus:outline-none focus:border-[#f53003]">
                                 <option value="5">5 - Doskonała</option>
                                 <option value="4">4 - Dobra</option>
                                 <option value="3">3 - Średnia</option>
@@ -113,8 +110,8 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-widest text-[#706f6c] mb-2">Komentarz</label>
-                            <textarea name="comment" rows="4" class="w-full px-4 py-2 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-sm text-sm focus:outline-none focus:border-[#f53003] min-h-10" placeholder="Podziel się swoimi przemyśleniami o tej książce..."></textarea>
+                            <label for="comment" class="block text-xs font-bold uppercase tracking-widest text-[#706f6c] mb-2">Komentarz</label>
+                            <textarea id="comment" name="comment" rows="4" class="w-full px-4 py-2 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-sm text-sm focus:outline-none focus:border-[#f53003] min-h-10" placeholder="Podziel się swoimi przemyśleniami o tej książce..."></textarea>
                             @error('comment')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -143,7 +140,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-sm font-semibold">{{ $review->user->name }}</h4>
-                                    <span class="text-xs text-[#706f6c]">{{ $review->created_at->format('d M Y') }}</span>
+                                    <span class="text-xs text-[#706f6c]">{{ $review->created_at->translatedFormat('d M Y') }}</span>
                                 </div>
                             </div>
                             <div class="flex items-center gap-1 text-[#f53003]">

@@ -16,7 +16,6 @@
             @csrf
             @method('PUT')
 
-            <!-- Name -->
             <div class="space-y-2">
                 <label for="name" class="block text-sm font-semibold">Imię i Nazwisko</label>
                 <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" 
@@ -27,7 +26,6 @@
                 @enderror
             </div>
 
-            <!-- Email -->
             <div class="space-y-2">
                 <label for="email" class="block text-sm font-semibold">Adres Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" 
@@ -38,7 +36,6 @@
                 @enderror
             </div>
 
-            <!-- Role -->
             <div class="space-y-2">
                 <label for="role" class="block text-sm font-semibold">Rola Użytkownika</label>
                 <select name="role" id="role" 

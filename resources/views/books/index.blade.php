@@ -2,13 +2,14 @@
 
 @section('content')
 <div class="flex flex-col md:flex-row gap-8">
-    <!-- Sidebar -->
     <aside class="w-full md:w-64 shrink-0">
         <div class="sticky top-24 space-y-8">
             <div>
                 <h3 class="text-lg font-semibold mb-4">Szukaj</h3>
                 <form action="{{ route('books.index') }}" method="GET" class="relative">
+                    <label for="search" class="sr-only">Szukaj</label>
                     <input 
+                        id="search"
                         type="text" 
                         name="search" 
                         value="{{ request('search') }}"
@@ -42,7 +43,6 @@
         </div>
     </aside>
 
-    <!-- Book Grid -->
     <div class="flex-1">
         <div class="flex items-center justify-between mb-8">
             <h1 class="text-3xl font-bold tracking-tight">Nasza Kolekcja</h1>
@@ -58,8 +58,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($books as $book)
                     <div class="group bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-lg overflow-hidden hover:shadow-xl hover:shadow-[#f530030a] transition-all duration-300">
-                        <div class="aspect-[3/4] bg-[#fff2f2] dark:bg-[#1D0002] flex items-center justify-center p-8">
-                            <!-- Placeholder for book cover -->
+                        <div class="aspect-3/4 bg-[#fff2f2] dark:bg-[#1D0002] flex items-center justify-center p-8">
                             <div class="text-center">
                                 <span class="block text-xs font-bold text-[#f53003] uppercase tracking-widest mb-2">{{ $book->category->name }}</span>
                                 <h4 class="font-semibold line-clamp-2 px-4">{{ $book->title }}</h4>

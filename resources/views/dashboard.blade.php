@@ -8,7 +8,6 @@
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Loans Section -->
         <div class="lg:col-span-2 space-y-6">
             <h2 class="text-xl font-semibold">Aktualne Wypożyczenia</h2>
             @if($loans->isEmpty())
@@ -40,7 +39,6 @@
             @endif
         </div>
 
-        <!-- Sidebar Actions -->
         <div class="space-y-8">
             <div class="space-y-4">
                 <h3 class="font-semibold">Twoje Rezerwacje</h3>

@@ -20,7 +20,7 @@
             <thead class="bg-[#FDFDFC] dark:bg-[#0a0a0a] border-b border-[#19140015] dark:border-[#ffffff15]">
                 <tr>
                     <th class="px-6 py-4 font-semibold">Tytuł</th>
-                    <th class="px-6 py-4 font-semibold">Autor(rzy)</th>
+                    <th class="px-6 py-4 font-semibold">Autorzy</th>
                     <th class="px-6 py-4 font-semibold">Kategoria</th>
                     <th class="px-6 py-4 font-semibold">ISBN</th>
                     <th class="px-6 py-4 font-semibold text-right">Akcje</th>
@@ -30,7 +30,7 @@
                 @foreach($books as $book)
                     <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                         <td class="px-6 py-4 font-medium">
-                            <a href="{{ route('books.show', $book) }}" class="hover:text-[#f53003] hover:underline transition-colors" target="_blank">
+                            <a href="{{ route('books.show', $book) }}" class="hover:text-[#f53003] hover:underline transition-colors" target="_blank" rel="noopener noreferrer">
                                 {{ $book->title }}
                             </a>
                         </td>

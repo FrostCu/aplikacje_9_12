@@ -8,26 +8,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = User::paginate(20);
         return view('admin.users.index', compact('users'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(User $user)
     {
         return view('admin.users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, User $user)
     {
         $request->validate([
@@ -41,9 +32,6 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'Użytkownik zaktualizowany pomyślnie.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(User $user)
     {
         if ($user->id === auth()->id()) {

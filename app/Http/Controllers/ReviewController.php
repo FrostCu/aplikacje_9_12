@@ -13,27 +13,33 @@ class ReviewController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
             'book_id' => 'required|exists:books,id',
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'required|string|min:5',
+        ], [
+            'book_id.required' => 'Identyfikator książki jest wymagany.',
+            'book_id.exists' => 'Wybrana książka nie istnieje.',
+            'rating.required' => 'Ocena jest wymagana.',
+            'rating.integer' => 'Ocena musi być liczbą całkowitą.',
+            'rating.min' => 'Ocena musi wynosić co najmniej 1.',
+            'rating.max' => 'Ocena nie może być większa niż 5.',
+            'comment.required' => 'Komentarz jest wymagany.',
+            'comment.string' => 'Komentarz musi być ciągiem znaków.',
+            'comment.min' => 'Komentarz musi mieć co najmniej 5 znaków.',
         ]);
 
         $userId = Auth::id();
         $bookId = $request->book_id;
 
-        // Check if already reviewed
         $exists = Review::where('user_id', $userId)
             ->where('book_id', $bookId)
             ->exists();
 
         if ($exists) {
-            return back()->with('error', 'You have already reviewed this book.');
+            return back()->with('error', 'Już oceniłeś tę książkę.');
         }
 
         Review::create([
@@ -43,12 +49,9 @@ class ReviewController extends Controller
             'comment' => $request->comment,
         ]);
 
-        return back()->with('success', 'Review submitted successfully!');
+        return back()->with('success', 'Opinia została dodana pomyślnie!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Review $review)
     {
         if ($review->user_id !== Auth::id()) {
@@ -57,6 +60,6 @@ class ReviewController extends Controller
 
         $review->delete();
 
-        return back()->with('success', 'Review deleted.');
+        return back()->with('success', 'Opinia została usunięta.');
     }
 }

@@ -5,6 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string|null $description
+ * @property string $isbn
+ * @property int $total_copies
+ * @property int $published_year
+ * @property int $category_id
+ * @property int $publisher_id
+ * @property-read \Illuminate\Support\Collection|\App\Models\Author[] $authors
+ * @property-read \App\Models\Category $category
+ * @property-read \App\Models\Publisher $publisher
+ */
 class Book extends Model
 {
     /** @use HasFactory<\Database\Factories\BookFactory> */

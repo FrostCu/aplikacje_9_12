@@ -13,9 +13,6 @@ class ReservationController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -25,7 +22,6 @@ class ReservationController extends Controller
         $userId = Auth::id();
         $bookId = $request->book_id;
 
-        // Check if already reserved
         $exists = Reservation::where('user_id', $userId)
             ->where('book_id', $bookId)
             ->exists();
@@ -48,9 +44,6 @@ class ReservationController extends Controller
         return back()->with('success', 'Książka została zarezerwowana pomyślnie!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Reservation $reservation)
     {
         if ($reservation->user_id !== Auth::id()) {

@@ -7,7 +7,6 @@
         <p class="text-[#706f6c]">Przegląd operacji i statystyk biblioteki.</p>
     </header>
 
-    <!-- Stats Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <a href="{{ route('admin.books.index') }}" class="block p-6 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-lg hover:bg-gray-50 dark:hover:bg-[#1f1f1e] transition-colors">
             <span class="text-xs font-bold text-[#706f6c] uppercase tracking-widest">Wszystkie Książki</span>
@@ -35,7 +34,6 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Recent Loans -->
         <div class="space-y-6">
             <h2 class="text-xl font-semibold">Ostatnie Wypożyczenia</h2>
             <div class="overflow-hidden border border-[#19140015] dark:border-[#ffffff15] rounded-lg">
@@ -60,7 +58,6 @@
             </div>
         </div>
 
-        <!-- Recent Reservations -->
         <div class="space-y-6">
             <h2 class="text-xl font-semibold">Ostatnie Rezerwacje</h2>
             <div class="overflow-hidden border border-[#19140015] dark:border-[#ffffff15] rounded-lg">
