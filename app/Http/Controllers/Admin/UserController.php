@@ -38,7 +38,7 @@ class UserController extends Controller
 
         $user->update($request->only('name', 'email', 'role'));
 
-        return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.users.index')->with('success', 'Użytkownik zaktualizowany pomyślnie.');
     }
 
     /**
@@ -47,11 +47,11 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if ($user->id === auth()->id()) {
-            return back()->with('error', 'You cannot delete yourself.');
+            return back()->with('error', 'Nie możesz usunąć samego siebie.');
         }
 
         $user->delete();
 
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.users.index')->with('success', 'Użytkownik usunięty pomyślnie.');
     }
 }
