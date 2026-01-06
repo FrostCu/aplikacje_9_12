@@ -3,11 +3,11 @@
 @section('content')
 <div class="max-w-2xl mx-auto space-y-8">
     <header>
-        <h1 class="text-3xl font-bold tracking-tight">Edytuj Książkę</h1>
-        <p class="text-[#706f6c]">Zaktualizuj informacje o książce.</p>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Edytuj Książkę</h1>
+        <p class="text-[#706f6c] text-sm md:text-base">Zaktualizuj informacje o książce.</p>
     </header>
 
-    <form action="{{ route('admin.books.update', $book) }}" method="POST" class="space-y-6 bg-white dark:bg-[#161615] p-8 border border-[#19140015] dark:border-[#ffffff15] rounded-xl shadow-sm">
+    <form action="{{ route('admin.books.update', $book) }}" method="POST" class="space-y-6 bg-white dark:bg-[#161615] p-4 md:p-8 border border-[#19140015] dark:border-[#ffffff15] rounded-xl shadow-sm">
         @csrf
         @method('PUT')
 
@@ -17,7 +17,7 @@
             @error('title') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
         </div>
 
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="space-y-2">
                 <label for="isbn" class="block text-sm font-semibold text-[#1a1a1a] dark:text-[#eeeeee]">ISBN</label>
                 <input type="text" name="isbn" id="isbn" value="{{ old('isbn', $book->isbn) }}" class="w-full px-4 py-2.5 rounded-lg border border-[#19140025] dark:border-[#ffffff20] bg-white dark:bg-[#0a0a0a] text-sm focus:outline-none focus:ring-2 focus:ring-[#f53003] focus:ring-offset-0 transition-all" placeholder="np. 978-3-16-148410-0" required>
@@ -30,7 +30,7 @@
                 @error('published_year') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
             
-            <div class="space-y-2">
+            <div class="sm:col-span-2 space-y-2">
                 <label for="total_copies" class="block text-sm font-semibold text-[#1a1a1a] dark:text-[#eeeeee]">Liczba Egzemplarzy</label>
                 <input type="number" name="total_copies" id="total_copies" value="{{ old('total_copies', $book->total_copies) }}" min="0" class="w-full px-4 py-2.5 rounded-lg border border-[#19140025] dark:border-[#ffffff20] bg-white dark:bg-[#0a0a0a] text-sm focus:outline-none focus:ring-2 focus:ring-[#f53003] focus:ring-offset-0 transition-all" required>
                 @error('total_copies') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
@@ -75,9 +75,9 @@
             @error('authors') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
         </div>
 
-        <div class="flex justify-end items-center gap-6 pt-6 border-t border-[#19140015] dark:border-[#ffffff15]">
-            <a href="{{ route('admin.books.index') }}" class="text-sm font-semibold text-[#706f6c] hover:text-[#1a1a1a] dark:hover:text-white transition-colors">Anuluj</a>
-            <button type="submit" class="px-8 py-2.5 bg-[#f53003] text-white text-sm font-bold rounded-lg hover:bg-[#d92902] transition-transform active:scale-95 shadow-lg shadow-[#f530031a]">
+        <div class="flex flex-col-reverse sm:flex-row justify-end items-center gap-4 sm:gap-6 pt-6 border-t border-[#19140015] dark:border-[#ffffff15]">
+            <a href="{{ route('admin.books.index') }}" class="w-full sm:w-auto text-center text-sm font-semibold text-[#706f6c] hover:text-[#1a1a1a] dark:hover:text-white transition-colors">Anuluj</a>
+            <button type="submit" class="w-full sm:w-auto px-8 py-2.5 bg-[#f53003] text-white text-sm font-bold rounded-lg hover:bg-[#d92902] transition-transform active:scale-95 shadow-lg shadow-[#f530031a]">
                 Zapisz Zmiany
             </button>
         </div>

@@ -2,7 +2,12 @@
 
 @section('content')
 <div class="flex flex-col md:flex-row gap-8">
-    <aside class="w-full md:w-64 shrink-0">
+    <button type="button" onclick="document.getElementById('sidebar').classList.toggle('hidden')" class="md:hidden w-full py-2 px-4 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-lg text-sm font-medium flex items-center justify-between">
+        <span>Filtry i Szukaj</span>
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+    </button>
+
+    <aside id="sidebar" class="hidden md:block w-full md:w-64 shrink-0">
         <div class="sticky top-24 space-y-8">
             <div>
                 <h3 class="text-lg font-semibold mb-4">Szukaj</h3>
@@ -44,7 +49,7 @@
     </aside>
 
     <div class="flex-1">
-        <div class="flex items-center justify-between mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
             <h1 class="text-3xl font-bold tracking-tight">Nasza Kolekcja</h1>
             <p class="text-sm text-[#706f6c]">Znaleziono {{ $books->total() }} książek</p>
         </div>
@@ -62,7 +67,7 @@
                             <div class="text-center">
                                 <span class="block text-xs font-bold text-[#f53003] uppercase tracking-widest mb-2">{{ $book->category->name }}</span>
                                 <h4 class="font-semibold line-clamp-2 px-4">{{ $book->title }}</h4>
-                                <p class="text-xs text-[#706f6c] mt-2">autor: {{ $book->authors->pluck('name')->join(', ') }}</p>
+                                <p class="text-xs text-[#706f6c] mt-2">{{ $book->authors->pluck('name')->join(', ') }}</p>
                             </div>
                         </div>
                         <div class="p-4">
@@ -78,7 +83,7 @@
                 @endforeach
             </div>
 
-            <div class="mt-12">
+            <div class="mt-12 overflow-x-auto">
                 {{ $books->links() }}
             </div>
         @endif

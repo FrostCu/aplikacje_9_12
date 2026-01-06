@@ -3,11 +3,11 @@
 @section('content')
 <div class="max-w-2xl mx-auto space-y-8">
     <header>
-        <h1 class="text-3xl font-bold tracking-tight">Utwórz Nowe Wypożyczenie</h1>
-        <p class="text-[#706f6c]">Wypożycz książkę użytkownikowi.</p>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Utwórz Wypożyczenie</h1>
+        <p class="text-[#706f6c] text-sm md:text-base">Wypożycz książkę użytkownikowi.</p>
     </header>
 
-    <form action="{{ route('admin.loans.store') }}" method="POST" class="space-y-6 bg-white dark:bg-[#161615] p-8 border border-[#19140015] dark:border-[#ffffff15] rounded-xl shadow-sm">
+    <form action="{{ route('admin.loans.store') }}" method="POST" class="space-y-6 bg-white dark:bg-[#161615] p-4 md:p-8 border border-[#19140015] dark:border-[#ffffff15] rounded-xl shadow-sm">
         @csrf
 
         <div class="space-y-2">
@@ -38,9 +38,9 @@
             @error('due_date') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
         </div>
 
-        <div class="flex justify-end items-center gap-6 pt-6 border-t border-[#19140015] dark:border-[#ffffff15]">
-            <a href="{{ route('admin.loans.index') }}" class="text-sm font-semibold text-[#706f6c] hover:text-[#1a1a1a] dark:hover:text-white transition-colors">Anuluj</a>
-            <button type="submit" class="px-8 py-2.5 bg-[#f53003] text-white text-sm font-bold rounded-lg hover:bg-[#d92902] transition-transform active:scale-95 shadow-lg shadow-[#f530031a]">
+        <div class="flex flex-col-reverse sm:flex-row justify-end items-center gap-4 sm:gap-6 pt-6 border-t border-[#19140015] dark:border-[#ffffff15]">
+            <a href="{{ route('admin.loans.index') }}" class="w-full sm:w-auto text-center text-sm font-semibold text-[#706f6c] hover:text-[#1a1a1a] dark:hover:text-white transition-colors">Anuluj</a>
+            <button type="submit" class="w-full sm:w-auto px-8 py-2.5 bg-[#f53003] text-white text-sm font-bold rounded-lg hover:bg-[#d92902] transition-transform active:scale-95 shadow-lg shadow-[#f530031a]">
                 Utwórz Wypożyczenie
             </button>
         </div>

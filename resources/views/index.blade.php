@@ -9,7 +9,7 @@
             <p class="text-lg text-[#706f6c] dark:text-[#A1A09A] max-w-2xl mx-auto">
                 Odkryj swoją następną ulubioną książkę w naszej obszernej kolekcji. Wypożyczaj, rezerwuj i oceniaj książki z łatwością.
             </p>
-            <div class="flex justify-center gap-4 mt-6">
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
                 <a href="{{ route('books.index') }}" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#1b1b18] hover:bg-black md:text-lg transition-colors">
                     Przeglądaj Książki
                 </a>
